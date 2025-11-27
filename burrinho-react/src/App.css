@@ -1,0 +1,441 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { 
+  font-family: system-ui, -apple-system, sans-serif; 
+  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container { 
+  max-width: 1400px; 
+  margin: 0 auto; 
+}
+
+h1 { 
+  text-align: center; 
+  color: #312e81; 
+  margin-bottom: 24px; 
+  font-size: 2rem; 
+}
+
+/* Tela Inicial */
+.tela-inicial { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 80vh; 
+}
+
+.inicial-card { 
+  background: white; 
+  border-radius: 16px; 
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15); 
+  padding: 48px; 
+  max-width: 500px; 
+  width: 100%; 
+}
+
+.inicial-card h1 { 
+  font-size: 2.5rem; 
+  margin-bottom: 32px; 
+}
+
+.form-group { 
+  margin-bottom: 32px; 
+}
+
+.form-group label { 
+  display: block; 
+  font-weight: 600; 
+  font-size: 1.1rem; 
+  color: #374151; 
+  margin-bottom: 12px; 
+}
+
+.form-group input { 
+  width: 100%; 
+  padding: 12px 16px; 
+  border: 2px solid #d1d5db; 
+  border-radius: 8px; 
+  font-size: 1.1rem; 
+}
+
+.form-group input:focus { 
+  outline: none; 
+  border-color: #4f46e5; 
+}
+
+.btn { 
+  width: 100%; 
+  padding: 16px; 
+  border: none; 
+  border-radius: 8px; 
+  font-size: 1.25rem; 
+  font-weight: 700; 
+  cursor: pointer; 
+  transition: all 0.2s; 
+}
+
+.btn-primary { 
+  background: #4f46e5; 
+  color: white; 
+}
+
+.btn-primary:hover { 
+  background: #4338ca; 
+}
+
+.btn-success { 
+  background: #10b981; 
+  color: white; 
+}
+
+.btn-success:hover { 
+  background: #059669; 
+}
+
+.btn-success:disabled { 
+  background: #d1d5db; 
+  color: #9ca3af; 
+  cursor: not-allowed; 
+}
+
+/* Layout do Jogo */
+.hidden { 
+  display: none !important; 
+}
+
+.game-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 400px; 
+  gap: 24px; 
+  margin-bottom: 24px; 
+}
+
+@media (max-width: 1024px) { 
+  .game-grid { 
+    grid-template-columns: 1fr; 
+  } 
+}
+
+.card { 
+  background: white; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  padding: 24px; 
+}
+
+.card h2 { 
+  font-size: 1.5rem; 
+  color: #1f2937; 
+  margin-bottom: 16px; 
+}
+
+.card h3 { 
+  font-size: 1.25rem; 
+  color: #1f2937; 
+  margin-bottom: 12px; 
+}
+
+/* Tabuleiro */
+.board-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 16px; 
+}
+
+.pecas-count { 
+  background: #e0e7ff; 
+  padding: 8px 16px; 
+  border-radius: 8px; 
+  font-weight: 600; 
+}
+
+.pecas-count span { 
+  color: #4f46e5; 
+}
+
+.board { 
+  background: #f9fafb; 
+  border-radius: 8px; 
+  padding: 24px; 
+  min-height: 200px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start; 
+  overflow-x: auto; 
+}
+
+.board.empty { 
+  justify-content: center; 
+  color: #9ca3af; 
+  font-size: 1.1rem; 
+}
+
+.board-pecas { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+}
+
+.peca { 
+  background: white; 
+  border: 4px solid #1f2937; 
+  border-radius: 12px; 
+  padding: 12px 16px; 
+  font-weight: 700; 
+  font-size: 1.5rem; 
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15); 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  white-space: nowrap; 
+}
+
+.peca-esq { 
+  color: #2563eb; 
+}
+
+.peca-div { 
+  color: #9ca3af; 
+}
+
+.peca-dir { 
+  color: #dc2626; 
+}
+
+.peca-arrow { 
+  color: #10b981; 
+  font-weight: 700; 
+  font-size: 1.25rem; 
+}
+
+/* Placar */
+.placar { 
+  margin-bottom: 16px; 
+}
+
+.jogador-info { 
+  padding: 16px; 
+  border-radius: 8px; 
+  margin-bottom: 12px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  background: #f9fafb; 
+}
+
+.jogador-info.ativo { 
+  background: #d1fae5; 
+  border: 2px solid #10b981; 
+}
+
+.jogador-info.vencedor { 
+  background: #d1fae5; 
+}
+
+.jogador-info.perdedor { 
+  background: #fee2e2; 
+}
+
+.jogador-nome { 
+  font-weight: 600; 
+}
+
+.jogador-pontos { 
+  font-size: 1.75rem; 
+  font-weight: 700; 
+  color: #4f46e5; 
+}
+
+.game-over-msg { 
+  text-align: center; 
+  font-weight: 700; 
+  font-size: 1.1rem; 
+  margin-top: 16px; 
+  color: #1f2937; 
+}
+
+/* Peça Puxada */
+.peca-puxada-box { 
+  background: #fef3c7; 
+  border: 2px solid #f59e0b; 
+  border-radius: 8px; 
+  padding: 16px; 
+  text-align: center; 
+  margin-bottom: 16px; 
+}
+
+.peca-puxada-display { 
+  font-size: 1.75rem; 
+  font-weight: 700; 
+  margin-bottom: 12px; 
+  font-family: monospace; 
+}
+
+.peca-puxada-label { 
+  font-size: 0.875rem; 
+  font-weight: 600; 
+  margin-bottom: 12px; 
+}
+
+.btn-group { 
+  display: flex; 
+  gap: 8px; 
+  margin-bottom: 8px; 
+}
+
+.btn-group button { 
+  flex: 1; 
+}
+
+.btn-esq { 
+  background: #3b82f6; 
+  color: white; 
+  padding: 10px; 
+  border: none; 
+  border-radius: 6px; 
+  font-weight: 600; 
+  cursor: pointer; 
+}
+
+.btn-esq:hover { 
+  background: #2563eb; 
+}
+
+.btn-dir { 
+  background: #dc2626; 
+  color: white; 
+  padding: 10px; 
+  border: none; 
+  border-radius: 6px; 
+  font-weight: 600; 
+  cursor: pointer; 
+}
+
+.btn-dir:hover { 
+  background: #b91c1c; 
+}
+
+.btn-devolver { 
+  background: #ef4444; 
+  color: white; 
+  padding: 10px; 
+  border: none; 
+  border-radius: 6px; 
+  font-weight: 600; 
+  cursor: pointer; 
+  width: 100%; 
+}
+
+.btn-devolver:hover { 
+  background: #dc2626; 
+}
+
+/* Controles */
+.rodada-info { 
+  text-align: center; 
+  margin-top: 12px; 
+  font-size: 0.875rem; 
+  color: #6b7280; 
+}
+
+/* Monte */
+.monte-pecas { 
+  background: #f9fafb; 
+  border-radius: 8px; 
+  padding: 16px; 
+}
+
+.monte-label { 
+  font-size: 0.875rem; 
+  color: #6b7280; 
+  margin-bottom: 12px; 
+}
+
+.monte-list { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 8px; 
+  justify-content: flex-start; 
+}
+
+.monte-peca { 
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb); 
+  border: 2px solid #9ca3af; 
+  border-radius: 8px; 
+  padding: 8px 12px; 
+  font-size: 0.875rem; 
+  font-weight: 700; 
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); 
+  display: flex; 
+  align-items: center; 
+  gap: 4px; 
+}
+
+.monte-peca.proxima-j1 { 
+  background: #d1fae5; 
+  border: 2px solid #10b981; 
+  box-shadow: 0 0 0 2px #10b98150; 
+  transform: scale(1.1); 
+}
+
+.monte-peca.proxima-j2 { 
+  background: #dbeafe; 
+  border: 2px solid #3b82f6; 
+  box-shadow: 0 0 0 2px #3b82f650; 
+  transform: scale(1.1); 
+}
+
+.monte-peca.seguinte-j1 { 
+  background: #d1fae5; 
+  border: 2px solid #10b981; 
+  box-shadow: 0 0 0 2px #10b98130; 
+}
+
+.monte-peca.seguinte-j2 { 
+  background: #dbeafe; 
+  border: 2px solid #3b82f6; 
+  box-shadow: 0 0 0 2px #3b82f630; 
+}
+
+.monte-peca .marcador { 
+  font-size: 0.75rem; 
+  margin-left: 4px; 
+}
+
+/* Log */
+.log-table { 
+  width: 100%; 
+  font-size: 0.875rem; 
+  border-collapse: collapse; 
+}
+
+.log-table thead { 
+  background: #f3f4f6; 
+}
+
+.log-table th { 
+  padding: 8px; 
+  text-align: left; 
+  font-weight: 600; 
+}
+
+.log-table td { 
+  padding: 8px; 
+  border-top: 1px solid #e5e7eb; 
+}
+
+.log-table tbody tr:hover { 
+  background: #f9fafb; 
+}
+
+.overflow-auto { 
+  overflow-x: auto; 
+}
