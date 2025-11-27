@@ -1,11 +1,11 @@
 export const CabecaPeca = Object.freeze({
-  BRANCO: "BRANCO",
-  PIO: "PIO",
-  DUQUE: "DUQUE",
-  TERNO: "TERNO",
-  QUADRA: "QUADRA",
-  QUINA: "QUINA",
-  SENA: "SENA",
+  BRANCO: "⚪",
+  PIO: "①",
+  DUQUE: "②",
+  TERNO: "③",
+  QUADRA: "④",
+  QUINA: "⑤",
+  SENA: "⑥",
 });
 
 export const CABECAS_ARRAY = Object.freeze([
@@ -24,6 +24,8 @@ export class Peca {
     this.direita = direita;
   }
   tem(c) { return this.esquerda === c || this.direita === c; }
+  inverte() { [this.esquerda, this.direita] = [this.direita, this.esquerda]; }
+  clone() { return new Peca(this.esquerda, this.direita); }
   toString() { return `[${this.esquerda}|${this.direita}]`; }
 }
 
