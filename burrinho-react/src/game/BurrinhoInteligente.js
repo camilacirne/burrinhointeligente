@@ -1,5 +1,5 @@
 import { CABECAS_ARRAY, Peca } from "./models.js";
-import { Tabuleiro } from "./Tabuleiro.js";
+import { Tabuleiro } from "./tabuleiro.js";
 
 export class BurrinhoInteligente {
   constructor(maxRodadas = 100) {
